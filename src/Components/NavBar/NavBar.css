@@ -9,12 +9,11 @@
 .header__btn__container {
   margin-right: 40px;
   display: flex;
-  width: 36%;
+  width: 50%;
   align-items: center;
   justify-content: space-around;
 }
 .btn-primary {
-  height: 35px;
   font-family: "Orbitron", sans-serif;
   border-radius: 9px;
   background-color: transparent;
@@ -23,6 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  font-size: 100%;
 }
 .btn-primary:hover {
   background-color: transparent;
@@ -46,6 +46,11 @@
 .logo__img {
   height: 35px;
   width: 200px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.logo__img:hover {
+  box-shadow: 5px 5px 5px 1px #0ff;
 }
 .spinner-grow.text-primary {
   background-color: #0ff;
@@ -56,13 +61,22 @@
 .hidden {
   display: none;
 }
-/* .btn.btn-primary.active,
-.btn.btn-primary:active {
+.header__slider__outer {
+  font-family: "Orbitron", sans-serif;
+  color: #0ff;
+  display: flex;
+  align-items: center;
 }
-.btn.btn-primary.active.focus,
-.btn.btn-primary.active:focus,
-.btn.btn-primary.active:hover,
-.btn.btn-primary:active.focus,
-.btn.btn-primary:active:focus,
-.btn.btn-primary:active:hover {
-} */
+.form-label {
+  margin: 0;
+  margin-right: 20px;
+}
+.form-range::-webkit-slider-runnable-track {
+  height: 10px;
+  -webkit-appearance: none;
+  background-color: #38b3be;
+  margin-top: -1px;
+}
+.form-range::-webkit-slider-thumb {
+  background-color: #0af;
+}

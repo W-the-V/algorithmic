@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import NavBar from "./Components/NavBar";
+import Visualizer from "./Components/Visualizer";
 
 function App() {
-  //initialize variables to thread to child components
-  const [dataArray, setDataArray] = useState(new Array());
-  const [sortMethod, setSortMethod] = useState();
-
+  const [timeoutArr, setTimeOutArr] = useState([]);
+  const [speed, setSpeed] = useState(0);
   return (
     <div className="App">
-      <NavBar />
+      <NavBar
+        timeoutArr={timeoutArr}
+        setTimeOutArr={setTimeOutArr}
+        speed={speed}
+        setSpeed={setSpeed}
+      />
+      <Visualizer
+        timeoutArr={timeoutArr}
+        setTimeOutArr={setTimeOutArr}
+        speed={speed}
+      />
     </div>
   );
 }
