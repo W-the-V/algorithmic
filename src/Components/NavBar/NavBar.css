@@ -1,0 +1,68 @@
+.navbar__outer {
+  background-image: linear-gradient(#000539, #07236d);
+  height: 55px;
+  box-shadow: 0px 0px 6px 2px #0ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__btn__container {
+  margin-right: 40px;
+  display: flex;
+  width: 36%;
+  align-items: center;
+  justify-content: space-around;
+}
+.btn-primary {
+  height: 35px;
+  font-family: "Orbitron", sans-serif;
+  border-radius: 9px;
+  background-color: transparent;
+  color: #0ff;
+  border-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.btn-primary:hover {
+  background-color: transparent;
+  color: #0ff;
+  border-color: transparent;
+  box-shadow: 0px 0px 5px 2px #0ff;
+}
+.btn.btn-primary.focus,
+.btn.btn-primary:focus {
+  background-color: transparent;
+  color: #0ff;
+  border-color: transparent;
+  box-shadow: 0px 0px 7px 5px #0ff;
+}
+.header__title {
+  color: #07236d;
+  font-family: "Monospace";
+  font-weight: bold;
+  font-size: 32px;
+}
+.logo__img {
+  height: 35px;
+  width: 200px;
+}
+.spinner-grow.text-primary {
+  background-color: #0ff;
+  height: 25px;
+  width: 25px;
+  margin-right: 7px;
+}
+.hidden {
+  display: none;
+}
+/* .btn.btn-primary.active,
+.btn.btn-primary:active {
+}
+.btn.btn-primary.active.focus,
+.btn.btn-primary.active:focus,
+.btn.btn-primary.active:hover,
+.btn.btn-primary:active.focus,
+.btn.btn-primary:active:focus,
+.btn.btn-primary:active:hover {
+} */
