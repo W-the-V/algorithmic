@@ -18,21 +18,43 @@ export const bubbleSort = (arr) => {
   return animations;
 };
 
-export const selectionSort = (array) => {
+export const selectionSort = (arr) => {
   let animations = [];
+  const array = [...arr];
   for (let i = 0; i < array.length; i++) {
-    let minIndex = i;
+    let min = i;
     for (let j = i + 1; j < array.length; j++) {
-      animations.push(minIndex);
+      animations.push(i);
       animations.push(j);
-      if (array[minIndex] > array[j]) {
-        animations.push([minIndex, j]);
-        minIndex = j;
+      if (array[min] > array[j]) {
+        min = j;
       }
     }
-    let active = array[i]; // save a copy of the first value
-    array[i] = array[i + 1]; // overwrite the first value with the second value
-    array[i + 1] = active;
+    let active = array[i];
+    array[i] = array[min];
+    array[min] = active;
+    animations.push([min, i]);
   }
-  return array;
+  return animations;
+};
+
+export const insertionSort = (arr) => {
+  let animations = [];
+  const array = [...arr];
+  for (let i = 1; i < array.length; i++) {
+    let current = array[i];
+    let j;
+    animations.push(array.indexOf(current));
+    if (array.indexOf(current) > 0) {
+      animations.push(array.indexOf(current) - 1);
+    }
+    for (j = i - 1; j >= 0 && current < array[j]; j--) {
+      animations.push(j);
+      animations.push(j + 1);
+      animations.push([j + 1, j]);
+      array[j + 1] = array[j];
+    }
+    array[j + 1] = current;
+  }
+  return animations;
 };

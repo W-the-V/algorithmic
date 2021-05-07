@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { bubbleSort } from "../../Algorithms";
+import * as Algorithms from "../../Algorithms";
 import { setMethod } from "../../store/data";
 import * as Tools from "../../Tools";
 import "./Visualizer.css";
@@ -18,7 +18,13 @@ function Visualizer({ setTimeOutArr, speed }) {
   };
   useEffect(() => {
     if (dataMethod === "bubble") {
-      const animations = bubbleSort(dataArray);
+      const animations = Algorithms.bubbleSort(dataArray);
+      Tools.animate(animations, resources);
+    } else if (dataMethod === "selection") {
+      const animations = Algorithms.selectionSort(dataArray);
+      Tools.animate(animations, resources);
+    } else if (dataMethod === "insertion") {
+      const animations = Algorithms.insertionSort(dataArray);
       Tools.animate(animations, resources);
     }
   }, [dataMethod]);

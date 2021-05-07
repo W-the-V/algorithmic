@@ -158,6 +158,8 @@ export const animate = (
         new Promise((res, rej) => {
           timeoutsArr.push(
             setTimeout(() => {
+              element1 = document.getElementById(`${afterNext[0]}`);
+              element2 = document.getElementById(`${afterNext[1]}`);
               let prevHeight = element1.style.height;
               let prevFont = element1.style.fontSize;
               element1.style.height = element2.style.height;
