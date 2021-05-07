@@ -2,58 +2,35 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { resetData, setMethod } from "../../store/data";
 import src from "../../images/algorithmic.png";
+import * as Tools from "../../Tools";
 import "./NavBar.css";
 
-function NavBar({ timeoutArr, setTimeOutArr, speed, setSpeed }) {
+function NavBar({ timeoutArr, setTimeOutArr, speed, setSpeed, size, setSize }) {
   const dataMethod = useSelector((state) => state.data.method);
   const [prevMethod, setPrevMethod] = useState();
   const dispatch = useDispatch();
-  const homeClick = () => {
-    if (dataMethod !== "init") {
-      timeoutArr.forEach((e) => {
-        clearTimeout(e);
-      });
-      document.getElementById(`${prevMethod}`).classList.add("hidden");
-      document.querySelectorAll(".active").forEach((e) => {
-        e.classList.remove("active");
-      });
-      dispatch(setMethod("init"));
-    }
-    dispatch(resetData());
-  };
-  const sortClick = (method) => {
-    if (dataMethod !== "init") {
-      timeoutArr.forEach((e) => {
-        clearTimeout(e);
-      });
-      document.querySelectorAll(".active").forEach((e) => {
-        e.classList.remove("active");
-      });
-      dispatch(resetData());
-    }
-    document.getElementById(`${method}`).classList.remove("hidden");
-    setPrevMethod(method);
-    dispatch(setMethod(method));
-  };
-  const changeSpeed = (e) => {
-    setSpeed(e.target.value);
-    if (dataMethod !== "init") {
-      timeoutArr.forEach((e) => {
-        clearTimeout(e);
-      });
-      document.getElementById(`${prevMethod}`).classList.add("hidden");
-      document.querySelectorAll(".active").forEach((e) => {
-        e.classList.remove("active");
-      });
-    }
-    if (prevMethod) {
-      sortClick(prevMethod);
-    }
+  const resources = {
+    dataMethod,
+    setMethod,
+    prevMethod,
+    setPrevMethod,
+    timeoutArr,
+    setTimeOutArr,
+    dispatch,
+    resetData,
+    size,
+    setSize,
+    speed,
+    setSpeed,
   };
   return (
     <>
       <div className="navbar__outer">
-        <img className="logo__img" src={src} onClick={() => homeClick()}></img>
+        <img
+          className="logo__img"
+          src={src}
+          onClick={() => Tools.homeClick(resources)}
+        ></img>
         <div className="header__slider__outer">
           <label for="customRange2" class="form-label">
             Speed
@@ -65,14 +42,28 @@ function NavBar({ timeoutArr, setTimeOutArr, speed, setSpeed }) {
             max="197"
             id="customRange2"
             value={speed}
-            onChange={(e) => changeSpeed(e)}
+            onChange={(e) => Tools.changeSpeed(e, resources)}
+          ></input>
+        </div>
+        <div className="header__slider__outer">
+          <label for="customRange2" class="form-label">
+            Size
+          </label>
+          <input
+            type="range"
+            class="form-range"
+            min="3"
+            max="100"
+            id="customRange2"
+            value={size}
+            onChange={(e) => Tools.changeSize(e, resources)}
           ></input>
         </div>
         <div className="header__btn__container">
           <button
             type="button"
             class="btn btn-primary"
-            onClick={() => sortClick("bubble")}
+            onClick={() => Tools.sortClick("bubble", resources)}
           >
             <div id="bubble" class="spinner-grow text-primary hidden"></div>
             Bubble Sort
@@ -80,7 +71,7 @@ function NavBar({ timeoutArr, setTimeOutArr, speed, setSpeed }) {
           <button
             type="button"
             class="btn btn-primary"
-            onClick={() => sortClick("selection")}
+            onClick={() => Tools.sortClick("selection", resources)}
           >
             <div id="selection" class="spinner-grow text-primary hidden"></div>
             Selection Sort
@@ -88,7 +79,7 @@ function NavBar({ timeoutArr, setTimeOutArr, speed, setSpeed }) {
           <button
             type="button"
             class="btn btn-primary"
-            onClick={() => sortClick("insertion")}
+            onClick={() => Tools.sortClick("insertion", resources)}
           >
             <div id="insertion" class="spinner-grow text-primary hidden"></div>
             Insertion Sort
@@ -96,7 +87,7 @@ function NavBar({ timeoutArr, setTimeOutArr, speed, setSpeed }) {
           <button
             type="button"
             class="btn btn-primary"
-            onClick={() => sortClick("quick")}
+            onClick={() => Tools.sortClick("quick", resources)}
           >
             <div id="quick" class="spinner-grow text-primary hidden"></div>
             Quick Sort
@@ -104,7 +95,7 @@ function NavBar({ timeoutArr, setTimeOutArr, speed, setSpeed }) {
           <button
             type="button"
             class="btn btn-primary"
-            onClick={() => sortClick("merge")}
+            onClick={() => Tools.sortClick("merge", resources)}
           >
             <div id="merge" class="spinner-grow text-primary hidden"></div>
             Merge Sort

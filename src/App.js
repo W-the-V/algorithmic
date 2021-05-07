@@ -5,6 +5,7 @@ import Visualizer from "./Components/Visualizer";
 function App() {
   const [timeoutArr, setTimeOutArr] = useState([]);
   const [speed, setSpeed] = useState(0);
+  const [size, setSize] = useState(50);
   return (
     <div className="App">
       <NavBar
@@ -12,12 +13,10 @@ function App() {
         setTimeOutArr={setTimeOutArr}
         speed={speed}
         setSpeed={setSpeed}
+        size={size}
+        setSize={setSize}
       />
-      <Visualizer
-        timeoutArr={timeoutArr}
-        setTimeOutArr={setTimeOutArr}
-        speed={speed}
-      />
+      <Visualizer setTimeOutArr={setTimeOutArr} speed={speed} />
     </div>
   );
 }

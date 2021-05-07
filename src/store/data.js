@@ -3,16 +3,16 @@ const CHANGE_DATA = "data/change";
 const SET_METHOD = "data/method";
 
 // Create array with randomized data from 5 to 100
-const makeData = () => {
+const makeData = (max) => {
   const dataArray = new Array();
-  for (let i = 1; i <= 50; i++) {
+  for (let i = 1; i <= max; i++) {
     dataArray.push(Math.round(Math.random() * 95 + 5));
   }
   return dataArray;
 };
 // function to dispatch to reset Data array in redux state
-export const resetData = () => {
-  const data = makeData();
+export const resetData = (max) => {
+  const data = makeData(max);
   return {
     type: SET_DATA,
     data,
@@ -33,7 +33,7 @@ export const setMethod = (method) => {
   };
 };
 //reducer
-const initialState = { array: makeData(), method: "init" };
+const initialState = { array: makeData(50), method: "init" };
 const dataReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {

@@ -1,5 +1,6 @@
 .visualizer__element {
-  width: 1.2%;
+  width: 50%;
+  max-width: 50%;
   margin-left: 3px;
   margin-right: 3px;
   background-color: #38b3be;
@@ -7,9 +8,14 @@
   border-radius: 4px;
 }
 .visualizer__outer {
-  margin-top: 9%;
-  background-color: transparent;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.visualizer__inner {
   height: 60vh;
+  width: 85%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
