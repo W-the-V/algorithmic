@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as Algorithms from "../../Algorithms";
-import { setMethod } from "../../store/data";
+import { setMethod, changeData } from "../../store/data";
 import * as Tools from "../../Tools";
 import "./Visualizer.css";
 
@@ -15,6 +15,8 @@ function Visualizer({ setTimeOutArr, speed }) {
     dispatch,
     setTimeOutArr,
     speed,
+    changeData,
+    dataArray,
   };
   useEffect(() => {
     if (dataMethod === "bubble") {
@@ -27,6 +29,11 @@ function Visualizer({ setTimeOutArr, speed }) {
       const animations = Algorithms.insertionSort(dataArray);
       Tools.animate(animations, resources);
     }
+    // else if (dataMethod === "quick") {
+    //   const animations = Algorithms.quickSort(dataArray);
+    //   console.log(animations);
+    //   Tools.quickAnimate(animations, resources);
+    // }
   }, [dataMethod]);
   return (
     <div className="visualizer__outer">

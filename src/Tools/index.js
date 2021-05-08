@@ -185,3 +185,77 @@ export const animate = (
   });
   dispatch(setMethod(""));
 };
+export const quickAnimate = (
+  array,
+  {
+    dataMethod,
+    setMethod,
+    dispatch,
+    setTimeOutArr,
+    speed,
+    changeData,
+    dataArray,
+  }
+) => {
+  const arr = [...dataArray];
+  const animations = [...array];
+  let count = 1;
+  while (animations.length) {
+    let workArr = animations.shift();
+    let pivot = workArr.shift();
+    let pivotEl = document.getElementById(arr.indexOf(pivot));
+    pivotEl.classList.add("highlight");
+    let leftArr = workArr[0];
+    let rightArr = workArr[1];
+
+    leftArr.forEach((e, i) => {
+      console.log(pivot);
+      if (typeof e !== "number") {
+        setTimeout(() => {
+          let removed = arr[e];
+          arr.splice(e, 1);
+          arr.unshift(removed);
+          pivotEl.classList.remove("highlight");
+          dispatch(changeData(arr));
+          pivotEl.classList.add("active");
+          pivotEl = document.getElementById(arr.indexOf(pivot));
+          pivotEl.classList.add("highlight");
+        }, count * (200 - speed) + 400);
+        count += 1;
+      } else {
+        setTimeout(() => {
+          document.getElementById(e).classList.add("active");
+        }, count * (200 - speed) + 400);
+        count += 1;
+        setTimeout(() => {
+          document.getElementById(e).classList.remove("active");
+        }, count * (200 - speed) + 400);
+        count += 1;
+      }
+    });
+    rightArr.forEach((e, i) => {
+      if (typeof e !== "number") {
+        setTimeout(() => {
+          let removed = arr[e];
+          arr.splice(e, 1);
+          arr.push(removed);
+          pivotEl.classList.remove("highlight");
+          dispatch(changeData(arr));
+          pivotEl.classList.add("active");
+          pivotEl = document.getElementById(arr.indexOf(pivot));
+          pivotEl.classList.add("highlight");
+        }, count * (200 - speed) + 400);
+        count += 1;
+      } else {
+        setTimeout(() => {
+          document.getElementById(e).classList.add("active");
+        }, count * (200 - speed) + 400);
+        count += 1;
+        setTimeout(() => {
+          document.getElementById(e).classList.remove("active");
+        }, count * (200 - speed) + 400);
+        count += 1;
+      }
+    });
+  }
+};

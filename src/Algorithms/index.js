@@ -7,8 +7,8 @@ export const bubbleSort = (arr) => {
     for (let i = 0; i < array.length - 1; i++) {
       animations.push(i, i + 1);
       if (array[i] > array[i + 1]) {
-        let active = array[i]; // save a copy of the first value
-        array[i] = array[i + 1]; // overwrite the first value with the second value
+        let active = array[i];
+        array[i] = array[i + 1];
         array[i + 1] = active;
         animations.push([i, i + 1]);
         swapped = true;
@@ -57,4 +57,37 @@ export const insertionSort = (arr) => {
     array[j + 1] = current;
   }
   return animations;
+};
+
+export const quickSort = (arr) => {
+  let outerAnimations = [];
+  let animations = [];
+  const array = [...arr];
+  if (array.length <= 1) {
+    return array;
+  }
+  let pivot = array.shift();
+  animations.push(pivot);
+  let leftAnimations = [];
+  let left = array.filter((el, i) => {
+    leftAnimations.push(i + 1);
+    if (el < pivot) {
+      leftAnimations.push([i + 1]);
+    }
+    return el < pivot;
+  });
+  animations.push(leftAnimations);
+  let rightAnimations = [];
+  let right = array.filter((el, i) => {
+    rightAnimations.push(i + 1);
+    if (el >= pivot) {
+      rightAnimations.push([i + 1]);
+    }
+    return el >= pivot;
+  });
+  animations.push(rightAnimations);
+  outerAnimations.push(animations);
+  let leftSorted = quickSort(left);
+  let rightSorted = quickSort(right);
+  return outerAnimations;
 };

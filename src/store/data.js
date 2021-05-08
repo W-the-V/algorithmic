@@ -38,10 +38,10 @@ const dataReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case SET_DATA:
-      newState = Object.assign({}, state, { array: action.data });
+      newState = Object.assign({}, state, { array: [...action.data] });
       return newState;
     case CHANGE_DATA:
-      newState = Object.assign({}, state, { array: action.data });
+      newState = Object.assign({}, state, { array: [...action.data] });
       return newState;
     case SET_METHOD:
       newState = Object.assign({}, state, { method: action.method });
