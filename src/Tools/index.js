@@ -29,6 +29,7 @@ export const sortClick = (
     setMethod,
     resetData,
     size,
+    prevMethod,
   }
 ) => {
   if (dataMethod !== "init") {
@@ -39,6 +40,9 @@ export const sortClick = (
       e.classList.remove("active");
     });
     dispatch(resetData(size));
+  }
+  if (prevMethod) {
+    document.getElementById(`${prevMethod}`).classList.add("hidden");
   }
   document.getElementById(`${method}`).classList.remove("hidden");
   setPrevMethod(method);
