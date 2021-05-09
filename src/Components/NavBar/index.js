@@ -84,7 +84,7 @@ function NavBar({ timeoutArr, setTimeOutArr, speed, setSpeed, size, setSize }) {
             <div id="insertion" class="spinner-grow text-primary hidden"></div>
             Insertion Sort
           </button>
-          {/* <button
+          <button
             type="button"
             class="btn btn-primary"
             onClick={() => Tools.sortClick("quick", resources)}
@@ -99,7 +99,7 @@ function NavBar({ timeoutArr, setTimeOutArr, speed, setSpeed, size, setSize }) {
           >
             <div id="merge" class="spinner-grow text-primary hidden"></div>
             Merge Sort
-          </button> */}
+          </button>
         </div>
       </div>
     </>

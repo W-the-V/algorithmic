@@ -28,12 +28,11 @@ function Visualizer({ setTimeOutArr, speed }) {
     } else if (dataMethod === "insertion") {
       const animations = Algorithms.insertionSort(dataArray);
       Tools.animate(animations, resources);
+    } else if (dataMethod === "quick") {
+      const animations = Algorithms.quickSort(dataArray);
+      // console.log(animations);
+      Tools.quickAnimate(animations, resources);
     }
-    // else if (dataMethod === "quick") {
-    //   const animations = Algorithms.quickSort(dataArray);
-    //   console.log(animations);
-    //   Tools.quickAnimate(animations, resources);
-    // }
   }, [dataMethod]);
   return (
     <div className="visualizer__outer">

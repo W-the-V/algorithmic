@@ -59,8 +59,11 @@ export const insertionSort = (arr) => {
   return animations;
 };
 
-export const quickSort = (arr) => {
-  let outerAnimations = [];
+export const quickSort = (arr, outerAnimations = []) => {
+  //[] outeranimations
+  //[pivot, [left array], [right array]] - animations
+  //[[pivot, [left array], [right array]]]
+  //
   let animations = [];
   const array = [...arr];
   if (array.length <= 1) {
@@ -87,7 +90,7 @@ export const quickSort = (arr) => {
   });
   animations.push(rightAnimations);
   outerAnimations.push(animations);
-  let leftSorted = quickSort(left);
-  let rightSorted = quickSort(right);
+  let leftSorted = quickSort(left, outerAnimations);
+  let rightSorted = quickSort(right, outerAnimations);
   return outerAnimations;
 };
